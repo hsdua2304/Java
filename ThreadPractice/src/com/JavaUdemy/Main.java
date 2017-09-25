@@ -17,7 +17,7 @@ public class Main {
             public void run(){
                 System.out.println(ANSI_GREEN+"Hello from the AnonymousClass of MyRunnable Class!!");
                 try{
-                    anotherThread.join(2000);
+                    anotherThread.join();
                     System.out.println(ANSI_GREEN+"AnotherThread is interupted,So I am Running from Anonymous Runnable");
                 }catch (InterruptedException e){
                     System.out.println(ANSI_GREEN+"Anonymous Runnable is Interrupted");
