@@ -13,7 +13,7 @@ public class Vehicle {
         this.type = type;
         this.size = size;
         this.currentVelocity = 0;
-        this.currentDirection = 0;
+        this.currentDirection = 0
     }
 
     public void stop(){

@@ -1,36 +1,81 @@
 package com.JavaUdemy;
 
-import java.util.ArrayList;
+import java.util.Scanner;
 
+/**
+ * Created by Harmandeep on 29-05-2018.
+ */
 public class Main {
-    private ArrayList<String> groceryList = new ArrayList<String>();
 
-    public void addItem(String item){
-        groceryList.add(item);
+    private static Scanner scanner = new Scanner(System.in);
+    private static GroceryList groceryList = new GroceryList();
+
+    public static void main(String args[]){
+        boolean quit = false;
+            printChoiceList();
+
+            while(!quit){
+                System.out.print("Enter your choice : ");
+                int choice = scanner.nextInt();
+                scanner.nextLine();
+            switch (choice) {
+                case 0:
+                    printChoiceList();
+                    break;
+                case 1:
+                    addItem();
+                    break;
+                case 2:
+                    groceryList.printItem();
+                    break;
+                case 3:
+                    System.out.print("Enter the position : ");
+                    int position = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("Item to be modified : ");
+                    String item = scanner.nextLine();
+                    groceryList.modifyItem(position-1,item);
+                    break;
+                case 4:
+                    System.out.print("Enter position : ");
+                    System.out.println(groceryList.removeItem(scanner.nextInt()) + " is been removed");
+                    break;
+                case 5:
+                    searchForItem();
+                    break;
+                case 6:
+                    quit = true;
+                    break;
+
+            }
+        }
+
+
     }
 
-    public void printItem(){
-        System.out.println("You have " + groceryList.size() + " item in your GroceyList.");
-        for(int i=0; i<groceryList.size(); i++){
-            System.out.println(i+1 + ". " + groceryList.get(i));
+    public static void printChoiceList(){
+        System.out.println("0 : Print choice List");
+        System.out.println("1 : Add Items");
+        System.out.println("2 : Print Items");
+        System.out.println("3 : Modify Items");
+        System.out.println("4 : Remove Items");
+        System.out.println("5 : Find Item");
+        System.out.println("6 : Quit");
+    }
+
+    public static void addItem(){
+        System.out.print("Enter the item you want to add : ");
+        groceryList.addItem(scanner.nextLine());
+    }
+
+    public static void searchForItem() {
+        System.out.print("Item to search for: ");
+        String searchItem = scanner.nextLine();
+        if(groceryList.findItem(searchItem) != null) {
+            System.out.println("Found " + searchItem + " in  our grocery list");
+        } else {
+            System.out.println(searchItem + " is not in the shopping list");
         }
     }
 
-    public void modifyItem(int position,String newItem){
-        groceryList.set(position,newItem);
-        System.out.println("Grocery item " + position+1 + " has been modified.");
-    }
-
-    public void removeItem(int position){
-        String removedItem = groceryList.get(position);
-        groceryList.remove(position);
-    }
-
-
-
-    public static void main(String[] args) {
-	// write your code here
-
-
-    }
 }
