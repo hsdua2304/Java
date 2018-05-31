@@ -3,13 +3,20 @@ import java.util.ArrayList;
 /**
  * Created by Harmandeep on 31-05-2018.
  */
-public class MobilePhone extends Contact {
+public class MobilePhone {
 
-    private ArrayList<Contact> contacts = new ArrayList<Contact>();
-    public MobilePhone(String name, String number) {
-        super(name, number);
+    private ArrayList<Contact> myContacts;
+
+    public MobilePhone(ArrayList<Contact> myContacts) {
+        this.myContacts = myContacts;
     }
 
-    public addNew()
+    public boolean addNewNumber(Contact contact){
+        if(findContact(contact.getName()) >= 0){
+            System.out.println("Contact Already exist");
+            return false;
+        }
+        
+    }
 
 }
